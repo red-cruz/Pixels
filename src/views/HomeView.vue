@@ -13,8 +13,19 @@
           @input="updateId"
           size="7"
         />
-        <input type="button" value="previous" class="button-minus" @click="id == 1 ? null : id--" />
-        <input type="button" value="next" class="button-plus" @click="id == 5000 ? null : id++" />
+        <input
+          type="button"
+          value="previous"
+          class="button-minus"
+          @click="id == 1 ? null : id-- && show()"
+        />
+        <input
+          type="button"
+          value="next"
+          class="button-plus"
+          @click="id == 5000 ? null : id++ && show()"
+        />
+        <input type="button" value="copy link" class="button-plus" @click="copyToClipboard(link)" />
       </div>
     </header>
 
@@ -24,6 +35,7 @@
 
 <script setup>
 import { computed, ref, watch } from 'vue'
+import { toast } from '../modules/swal'
 
 const id = ref(localStorage.getItem('id') ? Number(localStorage.getItem('id')) : 1)
 const url = 'https://play.pixels.xyz/pixels/share/'
@@ -33,12 +45,31 @@ watch(id, (newVal) => {
   localStorage.setItem('id', String(newVal))
 })
 
+function show() {
+  toast({ text: 'You are now viewing map ' + id.value, icon: 'info' })
+}
+
 function updateId(e) {
   const val = e.target.value
   if (val > 5000 || val < 1) {
     return false
   }
   id.value = val
+  show()
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      toast({
+        text: `${text} copied to clipboard`,
+        icon: 'success'
+      })
+    })
+    .catch(() => {
+      toast({ text: `Failed to copy ${text} to clipboard`, type: 'error' })
+    })
 }
 </script>
 
@@ -65,6 +96,7 @@ input[type='button'] {
   appearance: button;
   cursor: pointer;
   padding: 10px !important;
+  margin-bottom: 10px;
 }
 
 input::-webkit-outer-spin-button,
