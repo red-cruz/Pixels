@@ -78,10 +78,15 @@ function copyToClipboard(text) {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
     Verdana, sans-serif;
 }
+body {
+  overflow: auto;
+}
 iframe {
   width: 100%;
   height: 90vh;
+  margin-bottom: 20px;
 }
+
 input,
 textarea {
   border: 1px solid #eeeeee;
