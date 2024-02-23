@@ -13,8 +13,8 @@
           @input="updateId"
           size="7"
         />
-        <input type="button" value="-" class="button-minus" @click="id == 1 ? null : id--" />
-        <input type="button" value="+" class="button-plus" @click="id == 5000 ? null : id++" />
+        <input type="button" value="previous" class="button-minus" @click="id == 1 ? null : id--" />
+        <input type="button" value="next" class="button-plus" @click="id == 5000 ? null : id++" />
       </div>
     </header>
 
@@ -23,11 +23,15 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
-const id = ref(1)
+const id = ref(localStorage.getItem('id') ? Number(localStorage.getItem('id')) : 1)
 const url = 'https://play.pixels.xyz/pixels/share/'
 const link = computed(() => url + id.value)
+
+watch(id, (newVal) => {
+  localStorage.setItem('id', String(newVal))
+})
 
 function updateId(e) {
   const val = e.target.value
@@ -39,6 +43,10 @@ function updateId(e) {
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+    Verdana, sans-serif;
+}
 iframe {
   width: 100%;
   height: 90vh;
@@ -56,6 +64,7 @@ input[type='button'] {
   -webkit-appearance: button;
   appearance: button;
   cursor: pointer;
+  padding: 10px !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -83,6 +92,9 @@ input::-webkit-inner-spin-button {
   padding: 0;
   width: 38px;
   position: relative;
+}
+.input-group .button-plus {
+  margin-left: 1px;
 }
 
 .input-group .quantity-field {
