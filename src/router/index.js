@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Pixels',
+      name: 'Pixels Map',
       component: HomeView
     }
   ]
