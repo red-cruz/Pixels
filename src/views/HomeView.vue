@@ -15,17 +15,17 @@
         />
         <input
           type="button"
-          value="previous"
+          value="<- previous"
           class="button-minus"
           @click="id == 1 ? null : id-- && show()"
         />
         <input
           type="button"
-          value="next"
+          value="next ->"
           class="button-plus"
           @click="id == 5000 ? null : id++ && show()"
         />
-        <input type="button" value="copy link" class="button-plus" @click="copyToClipboard(link)" />
+        <input type="button" value="copy link" class="copy" @click="copyToClipboard(link)" />
       </div>
     </header>
 
@@ -97,6 +97,10 @@ input[type='button'] {
   cursor: pointer;
   padding: 10px !important;
   margin-bottom: 10px;
+}
+
+.copy {
+  float: right;
 }
 
 input::-webkit-outer-spin-button,
