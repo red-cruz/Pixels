@@ -79,9 +79,17 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
+
 iframe {
   width: 100%;
-  height: 80vh;
+  height: 90vh;
+}
+
+@media only screen and (max-width: 768px) {
+  /* Target tablets and smaller devices */
+  iframe {
+    height: 70vh;
+  }
 }
 
 input,

@@ -14,6 +14,7 @@ import gh from '@/img/github-mark.png'
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
   img {
     margin-right: 5px;
   }
