@@ -1,5 +1,5 @@
 <template>
-  <PixelButton @click="copy(link, txt)" title="Copy link to clipboard">
+  <PixelButton class="float-end" @click="copy(link, txt)" title="Copy link to clipboard">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"
@@ -22,11 +22,15 @@ import copy from '@/modules/copy.js'
 import { computed } from 'vue'
 import PixelButton from './PixelButton.vue'
 const props = defineProps({
-  text: String
+  id: Number
 })
 
-const link = computed(() => `https://play.pixels.xyz/pixels/share/${props.text}`)
-const txt = computed(() => `Copied link to map #${props.text}`)
+const link = computed(() => `https://play.pixels.xyz/pixels/share/${props.id}`)
+const txt = computed(() => `Copied link to map #${props.id}`)
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.float-end {
+  float: right;
+}
+</style>

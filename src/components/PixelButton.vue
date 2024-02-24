@@ -11,7 +11,6 @@
 <style lang="scss" scoped>
 .pixel-button {
   cursor: pointer;
-  float: right;
   strong {
     display: inline-block;
     position: relative;
