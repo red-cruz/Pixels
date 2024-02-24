@@ -1,11 +1,11 @@
 import { toast } from './swal'
 
-export default function (text) {
+export default function (text, msg = '') {
   navigator.clipboard
     .writeText(text)
     .then(() => {
       toast({
-        title: text,
+        title: msg || text,
         icon: 'success'
       })
     })

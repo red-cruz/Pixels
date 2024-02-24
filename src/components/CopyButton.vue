@@ -1,5 +1,5 @@
 <template>
-  <PixelButton @click="copy(txt)" title="Copy link to clipboard">
+  <PixelButton @click="copy(link, txt)" title="Copy link to clipboard">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"
@@ -25,6 +25,7 @@ const props = defineProps({
   text: String
 })
 
+const link = computed(() => `https://play.pixels.xyz/pixels/share/${props.text}`)
 const txt = computed(() => `Copied link to map #${props.text}`)
 </script>
 
