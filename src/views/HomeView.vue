@@ -25,17 +25,20 @@
           class="button-plus"
           @click="id == 5000 ? null : id++ && show()"
         />
-        <input type="button" value="copy link" class="copy" @click="copyToClipboard(link)" />
+        <CopyButton :text="id" />
       </div>
     </header>
-
     <iframe :src="link" frameborder="0"></iframe>
   </main>
+  <GitHub />
 </template>
 
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { toast } from '../modules/swal'
+import Swal from 'sweetalert2'
+import CopyButton from '@/components/CopyButton.vue'
+import GitHub from '@/components/GitHub.vue'
 
 const id = ref(localStorage.getItem('id') ? Number(localStorage.getItem('id')) : 1)
 const url = 'https://play.pixels.xyz/pixels/share/'
@@ -46,7 +49,14 @@ watch(id, (newVal) => {
 })
 
 function show() {
-  toast({ text: 'You are now viewing map ' + id.value, icon: 'info' })
+  toast({
+    title: 'Warping to map #' + id.value,
+    text: 'This may take a few seconds...',
+    icon: 'info',
+    didOpen() {
+      Swal.showLoading()
+    }
+  })
 }
 
 function updateId(e) {
@@ -57,34 +67,21 @@ function updateId(e) {
   id.value = val
   show()
 }
-
-function copyToClipboard(text) {
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      toast({
-        text: `${text} copied to clipboard`,
-        icon: 'success'
-      })
-    })
-    .catch(() => {
-      toast({ text: `Failed to copy ${text} to clipboard`, type: 'error' })
-    })
-}
 </script>
 
-<style lang="scss" scoped>
-* {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
-    Verdana, sans-serif;
-}
+<style lang="scss">
 body {
   overflow: auto;
+  background-color: #622aff;
+  color: white;
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: bold;
 }
 iframe {
   width: 100%;
   height: 90vh;
-  margin-bottom: 20px;
 }
 
 input,
@@ -102,10 +99,6 @@ input[type='button'] {
   cursor: pointer;
   padding: 10px !important;
   margin-bottom: 10px;
-}
-
-.copy {
-  float: right;
 }
 
 input::-webkit-outer-spin-button,
@@ -129,6 +122,7 @@ input::-webkit-inner-spin-button {
 .input-group .button-minus,
 .input-group .button-plus {
   font-weight: bold;
+  font-family: monospace;
   height: 38px;
   padding: 0;
   width: 38px;
