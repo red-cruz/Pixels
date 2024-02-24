@@ -79,6 +79,8 @@ function updateId(e) {
 <style lang="scss" scoped>
 header {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 
   link {
     margin-right: 10px;
@@ -97,10 +99,12 @@ header {
     box-shadow: rgba(255, 255, 255, 0.3) 0px 1px;
   }
   .actions {
+    margin-left: 10px;
     margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-grow: 1;
     div {
       display: flex;
       align-items: center;
@@ -117,6 +121,12 @@ iframe {
 }
 
 @media only screen and (max-width: 768px) {
+  header {
+    display: block;
+    .actions {
+      margin-left: 0;
+    }
+  }
   /* Target tablets and smaller devices */
   iframe {
     height: 70vh;

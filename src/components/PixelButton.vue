@@ -37,9 +37,6 @@
     &:hover {
       background-color: rgb(152, 176, 16);
     }
-    &:active {
-      background-color: #e3ff37;
-    }
   }
 }
 </style>
