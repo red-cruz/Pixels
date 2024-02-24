@@ -36,7 +36,9 @@
       /* top left */ inset 4px 4px 0px rgba(255, 255, 255, 0.2);
     &:hover {
       background-color: rgb(152, 176, 16);
-      // color: #3f3d8d;
+    }
+    &:active {
+      background-color: #e3ff37;
     }
   }
 }

@@ -8,7 +8,7 @@
           type="number"
           min="1"
           max="5000"
-          size="4"
+          size="6"
           :value="id"
           @input="updateId"
           ref="input"
@@ -16,8 +16,8 @@
       </div>
       <div class="actions">
         <div>
-          <PrevButton @click="id == 1 ? null : id-- && show()" />
-          <NextButton @click="id == 5000 ? null : id++ && show()" />
+          <PrevButton @click="id == 1 ? err() : id-- && show()" />
+          <NextButton @click="id == 5000 ? err() : id++ && show()" />
         </div>
         <CopyButton :id="id" />
       </div>
@@ -43,7 +43,13 @@ const input = ref(null)
 watch(id, (newVal) => {
   localStorage.setItem('id', String(newVal))
 })
-
+function err() {
+  toast({
+    title: 'Invalid map ID',
+    text: 'The map ID must be between 1 and 5000.',
+    icon: 'error'
+  })
+}
 function show(focus = false) {
   toast({
     title: 'Warping to map #' + id.value,
@@ -59,6 +65,7 @@ function show(focus = false) {
 function updateId(e) {
   const val = e.target.value
   if (val > 5000 || val < 1) {
+    err()
     return false
   }
 
