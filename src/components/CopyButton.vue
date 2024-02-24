@@ -2,8 +2,8 @@
   <PixelButton class="float-end" @click="copy(link, txt)" title="Copy link to clipboard">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
+      width="17"
+      height="17"
       viewBox="0 0 24 24"
       fill="none"
       stroke="#28248C"
@@ -29,8 +29,4 @@ const link = computed(() => `https://play.pixels.xyz/pixels/share/${props.id}`)
 const txt = computed(() => `Copied link to map #${props.id}`)
 </script>
 
-<style lang="scss" scoped>
-.float-end {
-  float: right;
-}
-</style>
+<style lang="scss" scoped></style>

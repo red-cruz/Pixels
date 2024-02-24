@@ -1,8 +1,8 @@
 <template>
   <main>
     <header>
-      <div class="input-group">
-        {{ url }}
+      <div class="link">
+        <span> {{ url }}</span>
         <input
           class="pixels-input"
           type="number"
@@ -13,22 +13,16 @@
           @input="updateId"
           ref="input"
         />
-        <input
-          type="button"
-          value="<- previous"
-          class="button-minus"
-          @click="id == 1 ? null : id-- && show()"
-        />
-        <input
-          type="button"
-          value="next ->"
-          class="button-plus"
-          @click="id == 5000 ? null : id++ && show()"
-        />
+      </div>
+      <div class="actions">
+        <div>
+          <PrevButton @click="id == 1 ? null : id-- && show()" />
+          <NextButton @click="id == 5000 ? null : id++ && show()" />
+        </div>
         <CopyButton :id="id" />
       </div>
     </header>
-    <!-- <iframe :src="link" frameborder="0"></iframe> -->
+    <iframe :src="link" frameborder="0"></iframe>
   </main>
   <GitHub />
 </template>
@@ -39,6 +33,8 @@ import { toast } from '../modules/swal'
 import Swal from 'sweetalert2'
 import CopyButton from '@/components/CopyButton.vue'
 import GitHub from '@/components/GitHub.vue'
+import PrevButton from '@/components/PrevButton.vue'
+import NextButton from '@/components/NextButton.vue'
 
 const id = ref(localStorage.getItem('id') ? Number(localStorage.getItem('id')) : 1)
 const url = 'https://play.pixels.xyz/pixels/share/'
@@ -74,6 +70,40 @@ function updateId(e) {
 </script>
 
 <style lang="scss" scoped>
+header {
+  margin-bottom: 10px;
+
+  link {
+    margin-right: 10px;
+  }
+
+  .pixels-input {
+    margin-left: 3px;
+    font-family: inherit;
+    color: rgb(255, 255, 255);
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 18px;
+    transition: box-shadow 0.1s ease-out 0s;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 1px;
+  }
+  .actions {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
 iframe {
   width: 100%;
   height: 84vh;
@@ -85,84 +115,4 @@ iframe {
     height: 70vh;
   }
 }
-
-.pixels-input {
-  // appearance: none;
-  // width: 100%;
-  font-family: inherit;
-  color: rgb(255, 255, 255);
-  border-radius: 0px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: 20px;
-  // line-height: 28px;
-  transition: box-shadow 0.1s ease-out 0s;
-  box-shadow: rgba(255, 255, 255, 0.3) 0px 1px;
-}
-
-// input,
-// textarea {
-//   border: 1px solid #eeeeee;
-//   box-sizing: border-box;
-//   margin: 0;
-//   outline: none;
-//   padding: 10px;
-// }
-
-// input[type='button'] {
-//   -webkit-appearance: button;
-//   appearance: button;
-//   cursor: pointer;
-//   padding: 10px !important;
-//   margin-bottom: 10px;
-// }
-
-// input::-webkit-outer-spin-button,
-// input::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-// }
-
-// .input-group {
-//   clear: both;
-//   margin: 15px 0 0;
-//   position: relative;
-// }
-
-// .input-group input[type='button'] {
-//   background-color: #eeeeee;
-//   min-width: 38px;
-//   width: auto;
-//   transition: all 300ms ease;
-// }
-
-// .input-group .button-minus,
-// .input-group .button-plus {
-//   font-weight: bold;
-//   font-family: monospace;
-//   height: 38px;
-//   padding: 0;
-//   width: 38px;
-//   position: relative;
-// }
-// .input-group .button-plus {
-//   margin-left: 1px;
-// }
-
-// .input-group .quantity-field {
-//   position: relative;
-//   height: 38px;
-//   text-align: center;
-//   width: auto;
-//   display: inline-block;
-//   font-size: 13px;
-//   margin: 0 0 5px;
-//   resize: vertical;
-// }
-
-// input[type='number'] {
-//   -moz-appearance: textfield;
-//   appearance: none;
-//   -webkit-appearance: none;
-// }
 </style>
