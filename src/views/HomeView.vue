@@ -82,7 +82,7 @@ body {
 
 iframe {
   width: 100%;
-  height: 90vh;
+  height: 84vh;
 }
 
 @media only screen and (max-width: 768px) {
