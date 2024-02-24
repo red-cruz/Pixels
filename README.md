@@ -1,6 +1,6 @@
 # pixels
 
-Simple viewer for a friend
+Simple pixels map viewer for a friend
 
 ## Recommended IDE Setup
 
