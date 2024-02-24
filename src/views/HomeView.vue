@@ -81,7 +81,7 @@ body {
 }
 iframe {
   width: 100%;
-  height: 90vh;
+  height: 80vh;
 }
 
 input,

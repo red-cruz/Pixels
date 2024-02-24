@@ -1,35 +1,22 @@
-# pixels
+# Pixel Map Viewer - A Pixelated Journey, Made for a Friend
 
-Simple pixels map viewer for a friend
+This simple Pixels map viewer is a personal project I created for a friend who's been exploring the exciting Pixels metaverse. It allows them to navigate different maps with ease, appreciating the unique pixel art style and diverse communities within this immersive world.
 
-## Recommended IDE Setup
+**Key Features:**
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- **Effortless Exploration:** ⏪⏩ Use the intuitive plus and minus buttons to effortlessly switch between different maps, adjusting the ID to reveal new territories.
+- **Immersive Viewing Experience:** ️ Enjoy a focused viewing experience within an iframe, allowing you to appreciate the intricate details of each map and its unique pixel art style.
+- **Flexibility for Diverse Domains:** Render maps from various domains, potentially showcasing different regions or player-created areas within the Pixels metaverse.
 
-## Customize configuration
+**Designed with Friendship in Mind**
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This project reflects my support for my friend's passion and allows them to delve deeper into the Pixels experience.
 
-## Project Setup
+**Open to Exploration:**
 
-```sh
-npm install
-```
+Feel free to explore the code, suggest improvements, and join the pixelated adventure!
 
-### Compile and Hot-Reload for Development
+**Additional Features:**
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- **Copy link functionality:** Easily share your favorite maps with friends by copying the link directly to the clipboard.
+- **GitHub link:** Access the source code on GitHub for further customization and exploration.
