@@ -16,8 +16,8 @@
       </form>
       <div class="actions">
         <div @click="focus">
-          <PrevButton id="prev-button" @click="id == 1 ? err() : id-- && show()" />
-          <NextButton id="next-button" @click="id == 5000 ? err() : id++ && show()" />
+          <PrevButton @click="id == 1 ? err() : id-- && show()" />
+          <NextButton @click="id == 5000 ? err() : id++ && show()" />
         </div>
         <CopyButton :id="id" />
       </div>
@@ -53,14 +53,13 @@ function err() {
   })
 }
 
-function show(focus = false) {
+function show() {
   toast({
     title: 'Warping to map #' + id.value,
     text: 'This may take a few seconds...',
     icon: 'info',
     didOpen() {
       Swal.showLoading()
-      focus && input.value.focus()
     }
   })
 }
@@ -73,11 +72,7 @@ function updateId() {
   }
 
   id.value = val
-  show(true)
-}
-
-function focus() {
-  document.getElementById('prev-button').dispatchEvent(new Event('focusout'))
+  show()
 }
 </script>
 
