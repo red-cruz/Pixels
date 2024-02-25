@@ -4,7 +4,7 @@ This simple Pixels map viewer is a personal project I created for a friend who's
 
 **Key Features:**
 
-- **Effortless Exploration:** ⏪⏩ Use the intuitive plus and minus buttons to effortlessly switch between different maps, adjusting the ID to reveal new territories.
+- **Effortless Exploration:** ⏮️⏭️ Use the intuitive buttons to effortlessly switch between different maps, adjusting the ID to reveal new territories.
 - **Immersive Viewing Experience:** ️ Enjoy a focused viewing experience within an iframe, allowing you to appreciate the intricate details of each map and its unique pixel art style.
 - **Flexibility for Diverse Domains:** Render maps from various domains, potentially showcasing different regions or player-created areas within the Pixels metaverse.
 
