@@ -1,23 +1,23 @@
 <template>
   <main>
     <header>
-      <div class="link">
+      <form class="link" @submit="updateId">
         <span> {{ url }}</span>
         <input
+          required
           class="pixels-input"
           type="number"
           min="1"
           max="5000"
           size="6"
           :value="id"
-          @input="updateId"
           ref="input"
         />
-      </div>
+      </form>
       <div class="actions">
-        <div>
-          <PrevButton @click="id == 1 ? err() : id-- && show()" />
-          <NextButton @click="id == 5000 ? err() : id++ && show()" />
+        <div @click="focus">
+          <PrevButton id="prev-button" @click="id == 1 ? err() : id-- && show()" />
+          <NextButton id="next-button" @click="id == 5000 ? err() : id++ && show()" />
         </div>
         <CopyButton :id="id" />
       </div>
@@ -40,9 +40,11 @@ const id = ref(localStorage.getItem('id') ? Number(localStorage.getItem('id')) :
 const url = 'https://play.pixels.xyz/pixels/share/'
 const link = computed(() => url + id.value)
 const input = ref(null)
+
 watch(id, (newVal) => {
   localStorage.setItem('id', String(newVal))
 })
+
 function err() {
   toast({
     title: 'Invalid map ID',
@@ -50,6 +52,7 @@ function err() {
     icon: 'error'
   })
 }
+
 function show(focus = false) {
   toast({
     title: 'Warping to map #' + id.value,
@@ -62,17 +65,19 @@ function show(focus = false) {
   })
 }
 
-function updateId(e) {
-  const val = e.target.value
+function updateId() {
+  const val = input.value.value
   if (val > 5000 || val < 1) {
     err()
     return false
   }
 
-  setTimeout(() => {
-    id.value = val
-    show(true)
-  }, 1000)
+  id.value = val
+  show(true)
+}
+
+function focus() {
+  document.getElementById('prev-button').dispatchEvent(new Event('focusout'))
 }
 </script>
 

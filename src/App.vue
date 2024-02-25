@@ -2,7 +2,11 @@
   <RouterView />
 </template>
 
-<script setup></script>
+<script setup>
+import touch from '@/modules/touch'
+
+touch()
+</script>
 <style lang="scss">
 body {
   overflow: auto;
